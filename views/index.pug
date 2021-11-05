@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Hello 
+
+  button(type="button", class="btn btn-success" onclick="update()") Press Me
+    br    
+    
+    br
+    div(id="target") Display 
+    script.
+      var client_count=0
+      function update(){
+      client_count++;
+      document.getElementById("target").innerHTML=`value now ${client_count}`
+      }
+      br
+
+
+  a(href="cars") link to sports cars
