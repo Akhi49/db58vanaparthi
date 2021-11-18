@@ -1,35 +1,48 @@
+var express = require('express');
+var router = express.Router();
+// Require controller modules.
+var api_controller = require('../controllers/api');
+var car_controller = require('../controllers/car');
+/// API ROUTE ///
+// GET resources base.
+router.get('/resource', api_controller.api);
+/// car ROUTES ///
+// POST request for creating a car.
+router.post('/resource/car', car_controller.car_create_post);
+// DELETE request to delete car.
+router.delete('/resource/car/:id', car_controller.car_delete);
+// PUT request to update car.
+router.put('/resource/car/:id', car_controller.car_update_put);
+// GET request for one car.
+router.get('/resource/car/:id', car_controller.car_detail);
+// GET request for list of all car items.
+router.get('/resource/car', car_controller.car_list);
+module.exports = router;var express = require("express");
+var router = express.Router();
 
-var express = require('express'); 
-const costume_controlers= require('../controllers/costume');
-var router = express.Router(); 
- 
-// Require controller modules. 
-var api_controller = require('../controllers/api'); 
-var costume_controller = require('../controllers/costume'); 
- 
-/// API ROUTE /// 
- 
-// GET resources base. 
-router.get('/', api_controller.api); 
- 
-/// COSTUME ROUTES /// 
- 
-// POST request for creating a Costume.  
-router.post('/costume', costume_controller.costume_create_post); 
- 
-// DELETE request to delete Costume. 
-router.delete('/costume/:id', costume_controller.costume_delete); 
- 
-// PUT request to update Costume. 
-router.put('/costume/:id', 
-costume_controller.costume_update_put); 
- 
-// GET request for one Costume. 
-router.get('/costume/:id', costume_controller.costume_detail); 
- 
-// GET request for list of all Costume items. 
-router.get('/costume', costume_controller.costume_list); 
+// Require controller modules.
+var api_controller = require("../controllers/api");
+var car_controller = require("../controllers/car");
 
-router.get('/', costume_controlers.costume_view_all_Page ); 
- 
+/// API ROUTE ///
+// GET resources base.
+router.get("/resource", api_controller.api);
+
+/// car ROUTES ///
+
+// POST request for creating a car.
+router.post("/resource/car", car_controller.car_create_post);
+
+// DELETE request to delete car.
+router.delete("/resource/car/:id", car_controller.car_delete);
+
+// PUT request to update car.
+router.put("/resource/car/:id", car_controller.car_update_put);
+
+// GET request for one car.
+router.get("/resource/car/:id", car_controller.car_detail);
+
+// GET request for list of all car items.
+router.get("/resource/car", car_controller.car_list); 
+
 module.exports = router;
