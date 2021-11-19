@@ -1,11 +1,17 @@
 extends layout
 
 block content
-  div(class="container-fluid")
-    h1= title
-  - let results=[{CompanyName:"chevrolet",Model:"camaro",cost:25000},{CompanyName:"BMW",Model:"Z4",cost:50000},{CompanyName:"Porsche",Model:"911 Carrera 4",cost:108500}] 
-    div(class="row")
-      each form,index in results
+  
+    h1= title  
+    - let items = results 
+    div(class="container-fluid") 
+    div(class="row m-l")
+        each item in items
+         - let destination = `dispatch(\"/car/update?id=${item._id}\")`
+         div(class="row-sm-2", class="m-1") Item #{item.car_brand}(#{item.size}) is #{item.price} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+    each form,index in results
         div(class = "col-sm-2 bg-success" onclick=`buy(${index})`) #{form.CompanyName}
         br
         br
@@ -15,13 +21,19 @@ block content
         br
         br
         div(class = "col-sm-2 bg-secondary" onclick=`buy(${index})`) #{form.cost}
+
+
     script.
      
       function buy(itemNo)
       {
         alert(`You purchased Item ${itemNo+1}`)
-      }
- 
+      } 
+      function dispatch(path){ 
+      window.location.href=path 
+      } 
+
+
 
 
   
